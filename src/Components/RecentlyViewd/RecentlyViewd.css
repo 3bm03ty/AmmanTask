@@ -1,0 +1,98 @@
+.recently {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Roboto;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.slider {
+    transition: height 0.3s ease-out;
+    /* overflow: hidden; */
+    /* animation: toggleSlide 1s linear infinite; */
+    height: auto;
+}
+
+i {
+    transition: transform 0.3s ease-out;
+}
+
+.slide-up {
+    height: 0;
+}
+
+.slide-down {
+    height: auto;
+}
+
+.m-2{
+    margin: 10px;
+}
+
+img{
+    width: 100%;
+    cursor: pointer;
+}
+
+
+@keyframes toggleSlide {
+    0% {
+        height: auto;
+    }
+
+    100% {
+        height: 0;
+    }
+}
+
+.rotate-180deg {
+    transform: rotate(-180deg);
+}
+
+.slick-arrow.slick-next{
+    width: auto;
+    height: auto;
+}
+
+.slick-arrow.slick-next::before {
+    content: "\f054";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 600;
+    font-size: 100px;
+    color: #FFD600;
+    /* Vector */
+
+
+}
+
+.slick-arrow.slick-prev{
+    width: auto;
+    height: auto;
+    z-index: 1;
+}
+
+.slick-arrow.slick-prev::before {
+    content: "\f053";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 600;
+    font-size: 100px;
+    color: #FFD600;
+    /* Vector */
+
+
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 770px) {
+    .slick-next {
+        right: 0px !important;
+    }
+
+    .slick-prev{
+        left: 0 !important;
+    }
+}
+
+
+
