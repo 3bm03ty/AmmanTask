@@ -5,6 +5,7 @@ import axios from "axios";
 import { RecentlyViewedContext } from "../../Contexts/RecentlyViewedContext";
 import InfiniteScroll from "react-infinite-scroller";
 import imgThumb from "../../assets/imgs/notfound.jpg";
+import NoData from "../NoData/NoData";
 const Movie = ({ movies, isLoading }: any) => {
   const [isMovieLoading, setIsMovieLoading] = useState(false);
   const [dialogHeight, setDialogHeight] = useState(0);
@@ -234,144 +235,144 @@ const Movie = ({ movies, isLoading }: any) => {
     <>
       <div className="row position-relative mt-3">
         {!isLoading
-          ? movies?.map((movie: any, i: any) => {
-              return (
-                <div
-                  key={movie["imdbID"]}
-                  className="w-20 d-flex flex-column"
-                  onClick={handleCardClick}
-                >
-                  <div className="">
-                    <div
-                      className="movie"
-                      style={{
-                        marginBottom: movie.imdbID == imdbID ? dialogHeight : 0,
-                      }}
-                    >
-                      <div className="movie-card p-1">
-                        <img
-                          onClick={() => {
-                            getMovieDetails(movie["imdbID"]);
-                          }}
-                          className="w-100"
-                          src={
-                            movie?.Poster == "N/A" ? imgThumb : movie?.Poster
-                          }
-                          alt={i + ""}
-                        />
-                        {!isMovieLoading ? (
-                          <div className="card-overview text-center">
-                            {/* Render movie overview data */}
+          ? movies?.length > 0 ? movies?.map((movie: any, i: any) => {
+            return (
+              <div
+                key={movie["imdbID"]}
+                className="w-20 d-flex flex-column"
+                onClick={handleCardClick}
+              >
+                <div className="">
+                  <div
+                    className="movie"
+                    style={{
+                      marginBottom: movie.imdbID == imdbID ? dialogHeight : 0,
+                    }}
+                  >
+                    <div className="movie-card p-1">
+                      <img
+                        onClick={() => {
+                          getMovieDetails(movie["imdbID"]);
+                        }}
+                        className="w-100"
+                        src={
+                          movie?.Poster == "N/A" ? imgThumb : movie?.Poster
+                        }
+                        alt={i + ""}
+                      />
+                      {!isMovieLoading ? (
+                        <div className="card-overview text-center">
+                          {/* Render movie overview data */}
 
-                            <i className="fa-solid fa-caret-up"></i>
-                            <div
-                              className="dialog loaded-dialog"
-                              style={{
-                                backgroundImage: `url(${
-                                  movieDetails!["Poster"]
-                                }`,
-                                width: rowWidth + "px",
-                              }}
-                            >
-                              <div className="layer">
-                                <h1>{movieDetails.Title}</h1>
-                                <p>{movieDetails.Plot}</p>
-                                <div className="row">
-                                  <div className="w-20">
-                                    <h2>Rating</h2>
-                                    {renderStars()}
-                                  </div>
-                                  <div className="w-20">
-                                    <h2>Genre</h2>
-                                    <div className="spans">
-                                      {movieDetails.Genre.split(", ").map(
-                                        (genre, i) => {
-                                          return (
-                                            <span className="genre" key={i}>
-                                              {genre}
-                                            </span>
-                                          );
-                                        }
-                                      )}
-                                    </div>
-                                  </div>
-                                  <div className="w-20">
-                                    <h2>Released</h2>
-                                    <span>{movieDetails.Released}</span>
-                                  </div>
-                                  <div className="w-20">
-                                    <h2>Directors</h2>
-                                    <h5>{movieDetails.Director}</h5>
-                                  </div>
-                                  <div className="w-20">
-                                    <h2>Language</h2>
-                                    <div className="spans">
-                                      {movieDetails.Language.split(", ").map(
-                                        (lang, i) => {
-                                          return (
-                                            <span className="lang" key={i}>
-                                              {lang}
-                                            </span>
-                                          );
-                                        }
-                                      )}
-                                    </div>
+                          <i className="fa-solid fa-caret-up"></i>
+                          <div
+                            className="dialog loaded-dialog"
+                            style={{
+                              backgroundImage: `url(${
+                                movieDetails!["Poster"]
+                              }`,
+                              width: rowWidth + "px",
+                            }}
+                          >
+                            <div className="layer">
+                              <h1>{movieDetails.Title}</h1>
+                              <p>{movieDetails.Plot}</p>
+                              <div className="row">
+                                <div className="w-20">
+                                  <h2>Rating</h2>
+                                  {renderStars()}
+                                </div>
+                                <div className="w-20">
+                                  <h2>Genre</h2>
+                                  <div className="spans">
+                                    {movieDetails.Genre.split(", ").map(
+                                      (genre, i) => {
+                                        return (
+                                          <span className="genre" key={i}>
+                                            {genre}
+                                          </span>
+                                        );
+                                      }
+                                    )}
                                   </div>
                                 </div>
-                                <Link to={"/movieDetails/" + movie["imdbID"]}>
-                                  <button className="more-btn">
-                                    More Info
-                                  </button>
-                                </Link>
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="card-overview loading-overview text-center">
-                            {/* Render movie overview data */}
-                            <i className="fa-solid fa-caret-up"></i>
-                            <div
-                              className="dialog loading-dialog"
-                              style={{ width: rowWidth + "px" }}
-                            >
-                              <div className="layer">
-                                <h5></h5>
-                                <p></p>
-                                <div className="row">
-                                  <div className="w-20">
-                                    <h2>Rating</h2>
-                                    <h6></h6>
-                                  </div>
-                                  <div className="w-20">
-                                    <h2>Genre</h2>
-                                    <h6></h6>
-                                  </div>
-                                  <div className="w-20">
-                                    <h2>Released</h2>
-                                    <h6></h6>
-                                  </div>
-                                  <div className="w-20">
-                                    <h2>Directors</h2>
-                                    <h6></h6>
-                                  </div>
-                                  <div className="w-20">
-                                    <h2>Language</h2>
-                                    <h6></h6>
+                                <div className="w-20">
+                                  <h2>Released</h2>
+                                  <span>{movieDetails.Released}</span>
+                                </div>
+                                <div className="w-20">
+                                  <h2>Directors</h2>
+                                  <h5>{movieDetails.Director}</h5>
+                                </div>
+                                <div className="w-20">
+                                  <h2>Language</h2>
+                                  <div className="spans">
+                                    {movieDetails.Language.split(", ").map(
+                                      (lang, i) => {
+                                        return (
+                                          <span className="lang" key={i}>
+                                            {lang}
+                                          </span>
+                                        );
+                                      }
+                                    )}
                                   </div>
                                 </div>
-
-                                {/* <button className="more-btn">More Info</button> */}
-                                <h6 className="more-btn-loading"></h6>
                               </div>
+                              <Link to={"/movieDetails/" + movie["imdbID"]}>
+                                <button className="more-btn">
+                                  More Info
+                                </button>
+                              </Link>
                             </div>
                           </div>
-                        )}
-                      </div>
+                        </div>
+                      ) : (
+                        <div className="card-overview loading-overview text-center">
+                          {/* Render movie overview data */}
+                          <i className="fa-solid fa-caret-up"></i>
+                          <div
+                            className="dialog loading-dialog"
+                            style={{ width: rowWidth + "px" }}
+                          >
+                            <div className="layer">
+                              <h5></h5>
+                              <p></p>
+                              <div className="row">
+                                <div className="w-20">
+                                  <h2>Rating</h2>
+                                  <h6></h6>
+                                </div>
+                                <div className="w-20">
+                                  <h2>Genre</h2>
+                                  <h6></h6>
+                                </div>
+                                <div className="w-20">
+                                  <h2>Released</h2>
+                                  <h6></h6>
+                                </div>
+                                <div className="w-20">
+                                  <h2>Directors</h2>
+                                  <h6></h6>
+                                </div>
+                                <div className="w-20">
+                                  <h2>Language</h2>
+                                  <h6></h6>
+                                </div>
+                              </div>
+
+                              {/* <button className="more-btn">More Info</button> */}
+                              <h6 className="more-btn-loading"></h6>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
-              );
-            })
+              </div>
+            );
+          }) : <NoData/>
           : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x, i) => {
               return (
                 <div key={i} className="w-20 card-container ">

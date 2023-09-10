@@ -143,15 +143,13 @@ const MovieDetails: React.FC = () => {
                 <hr className="mt-2 mb-3" />
                 <div className="row mb-3">
                   <div className="col-6 col-md-4 p-2">
-                    <h4 className="text-muted">
-                      Rating
-                      <br />
-                      {renderStars()}
+                    <h4 className="">
+                      Rating                      
                     </h4>
-                    {/* <p>{game['title']}</p> */}
+                    <p>{renderStars()}</p>
                   </div>
                   <div className="col-6 col-md-4 p-2">
-                    <h4 className="text-muted">
+                    <h4 className="">
                       Genre
                       <br />
                     </h4>
@@ -166,28 +164,28 @@ const MovieDetails: React.FC = () => {
                     </div>
                   </div>
                   <div className="col-6 col-md-4 p-2">
-                    <h4 className="text-muted">
+                    <h4 className="">
                       Released
                       <br />
-                    </h4>{" "}
+                    </h4>
                     <span>{movieDetails?.Released}</span>
                   </div>
                   <div className="col-6 col-md-4 p-2">
-                    <h4 className="text-muted">
+                    <h4 className="">
                       Directors
                       <br />
                     </h4>{" "}
                     {movieDetails?.Director}
                   </div>
                   <div className="col-6 col-md-4 p-2">
-                    <h4 className="text-muted">
+                    <h4 className="">
                       Writer
                       <br />
                     </h4>{" "}
                     {movieDetails?.Writer}
                   </div>
                   <div className="col-6 col-md-4 p-2">
-                    <h4 className="text-muted">
+                    <h4 className="">
                       Language
                       <br />
                     </h4>
@@ -202,7 +200,7 @@ const MovieDetails: React.FC = () => {
                     </div>
                   </div>
                   <div className="col-6 col-md-4 p-2">
-                    <h4 className="text-muted">
+                    <h4 className="">
                       Actors
                       <br />
                     </h4>
@@ -221,14 +219,14 @@ const MovieDetails: React.FC = () => {
                     </div>
                   </div>
                   <div className="col-6 col-md-4 p-2 ">
-                    <h4 className="text-muted">
+                    <h4 className="">
                       Awards
                       <br />
                     </h4>
                     {movieDetails?.Awards}
                   </div>
                   <div className="col-6 col-md-4 p-2 ">
-                    <h4 className="text-muted">
+                    <h4 className="">
                       Country
                       <br />
                     </h4>

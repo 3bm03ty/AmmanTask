@@ -39,6 +39,10 @@ p {
   padding-right: 15px;
 }
 
+.p-4{
+  padding: 30px;
+}
+
 .mt-3 {
   margin-top: 30px;
 }
@@ -89,9 +93,16 @@ p {
   width: 90%;
 }
 
+.w-50{
+  width: 90%;
+}
 .text-center {
   text-align: center;
 
+}
+
+.m-auto{
+  margin: auto;
 }
 
 .text-decoration-none {
